@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <h2>NBA Arenas</h2>
+  
+  <div class="filter-section">
+    <form action="/arenas" method="GET" class="filter-form">
+      <input 
+        type="text" 
+        name="name" 
+        placeholder="Filter by arena name..."
+        value="<%= nameFilter %>"
+      >
+      <button type="submit">Filter</button>
+    </form>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <a href="/arenas?sort=name&direction=<%= sortOptions.field === 'name' && sortOptions.direction === 'asc' ? 'desc' : 'asc' %>">
+            Name <%= sortOptions.field === 'name' ? (sortOptions.direction === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>
+          <a href="/arenas?sort=location&direction=<%= sortOptions.field === 'location' && sortOptions.direction === 'asc' ? 'desc' : 'asc' %>">
+            Location <%= sortOptions.field === 'location' ? (sortOptions.direction === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>
+          <a href="/arenas?sort=capacity&direction=<%= sortOptions.field === 'capacity' && sortOptions.direction === 'asc' ? 'desc' : 'asc' %>">
+            Capacity <%= sortOptions.field === 'capacity' ? (sortOptions.direction === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>
+          <a href="/arenas?sort=openedYear&direction=<%= sortOptions.field === 'openedYear' && sortOptions.direction === 'asc' ? 'desc' : 'asc' %>">
+            Opened Year <%= sortOptions.field === 'openedYear' ? (sortOptions.direction === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% arenas.forEach(arena => { %>
+        <tr>
+          <td><%= arena.name %></td>
+          <td><%= arena.location %></td>
+          <td><%= arena.capacity.toLocaleString() %></td>
+          <td><%= arena.openedYear %></td>
+          <td><a href="/arenas/<%= arena.id %>" class="view-button">View</a></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/footer') %>

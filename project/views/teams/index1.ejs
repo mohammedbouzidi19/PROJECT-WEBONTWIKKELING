@@ -1,0 +1,77 @@
+<%- include("../partials/header") %>
+
+<section class="teams-list">
+  <h2>NBA Teams</h2>
+  
+  <div class="controls">
+    <form id="filter-form" class="filter-form">
+      <div class="form-group">
+        <label for="name-filter">Filter by name:</label>
+        <input type="text" id="name-filter" name="name" value="<%= nameFilter %>" placeholder="Enter team name...">
+        <button type="submit">Filter</button>
+      </div>
+    </form>
+  </div>
+
+  <% if (teams.length === 0) { %>
+    <div class="empty-state">
+      <p>No teams found matching your filter criteria.</p>
+      <a href="/teams">Clear filters</a>
+    </div>
+  <% } else { %>
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>
+              <a href="#" class="sort-link <%= sortOptions.field === 'name' ? 'active-sort' : '' %>" data-field="name">
+                Name
+                <% if (sortOptions.field === 'name') { %>
+                  <span class="sort-direction"><%= sortOptions.direction === 'asc' ? '↑' : '↓' %></span>
+                <% } %>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="sort-link <%= sortOptions.field === 'foundedYear' ? 'active-sort' : '' %>" data-field="foundedYear">
+                Founded Year
+                <% if (sortOptions.field === 'foundedYear') { %>
+                  <span class="sort-direction"><%= sortOptions.direction === 'asc' ? '↑' : '↓' %></span>
+                <% } %>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="sort-link <%= sortOptions.field === 'conference' ? 'active-sort' : '' %>" data-field="conference">
+                Conference
+                <% if (sortOptions.field === 'conference') { %>
+                  <span class="sort-direction"><%= sortOptions.direction === 'asc' ? '↑' : '↓' %></span>
+                <% } %>
+              </a>
+            </th>
+            <th>
+              <a href="#" class="sort-link <%= sortOptions.field === 'championships' ? 'active-sort' : '' %>" data-field="championships">
+                Championships
+                <% if (sortOptions.field === 'championships') { %>
+                  <span class="sort-direction"><%= sortOptions.direction === 'asc' ? '↑' : '↓' %></span>
+                <% } %>
+              </a>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% teams.forEach(team => { %>
+            <tr>
+              <td><%= team.name %></td>
+              <td><%= team.foundedYear %></td>
+              <td><span class="tag tag-<%= team.conference.toLowerCase() %>"><%= team.conference %></span></td>
+              <td><%= team.championships %></td>
+              <td><a href="/teams/<%= team.id %>" class="view-button">View</a></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</section>
+
+<%- include("../partials/footer") %>
