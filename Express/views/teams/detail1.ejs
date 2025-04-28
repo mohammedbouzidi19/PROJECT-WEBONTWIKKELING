@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <a href="/teams" class="back-link">← Back to Teams</a>
+  
+  <div class="detail-card">
+    <div class="detail-header">
+      <img src="<%= team.imageUrl %>" alt="<%= team.name %> Logo" class="team-logo">
+      <h2><%= team.name %></h2>
+    </div>
+    
+    <div class="detail-info">
+      <div class="info-section">
+        <h3>Team Information</h3>
+        <p><strong>Description:</strong> <%= team.description %></p>
+        <p><strong>Founded Year:</strong> <%= team.foundedYear %></p>
+        <p><strong>Conference:</strong> <%= team.conference %></p>
+        <p><strong>Championships:</strong> <%= team.championships %></p>
+        <p><strong>Status:</strong> <%= team.isActive ? 'Active' : 'Inactive' %></p>
+      </div>
+      
+      <div class="info-section">
+        <h3>Players</h3>
+        <ul class="players-list">
+          <% team.players.forEach(player => { %>
+            <li><%= player %></li>
+          <% }); %>
+        </ul>
+      </div>
+      
+      <div class="info-section">
+        <h3>Home Arena</h3>
+        <div class="arena-card">
+          <img src="<%= team.arena.imageUrl %>" alt="<%= team.arena.name %>">
+          <div class="arena-info">
+            <h4><%= team.arena.name %></h4>
+            <p><%= team.arena.location %></p>
+            <p>Capacity: <%= team.arena.capacity.toLocaleString() %></p>
+            <p>Opened: <%= team.arena.openedYear %></p>
+            <a href="/arenas/<%= team.arena.id %>" class="view-button">View Arena Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <h2>NBA Teams</h2>
+  
+  <div class="filter-section">
+    <form action="/teams" method="GET" class="filter-form">
+      <input 
+        type="text" 
+        name="name" 
+        placeholder="Filter by team name..."
+        value="<%= nameFilter %>"
+      >
+      <button type="submit">Filter</button>
+    </form>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <a href="/teams?sort=name&direction=<%= sortOptions.field === 'name' && sortOptions.direction === 'asc' ? 'desc' : 'asc' %>">
+            Name <%= sortOptions.field === 'name' ? (sortOptions.direction === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>
+          <a href="/teams?sort=foundedYear&direction=<%= sortOptions.field === 'foundedYear' && sortOptions.direction === 'asc' ? 'desc' : 'asc' %>">
+            Founded Year <%= sortOptions.field === 'foundedYear' ? (sortOptions.direction === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>
+          <a href="/teams?sort=conference&direction=<%= sortOptions.field === 'conference' && sortOptions.direction === 'asc' ? 'desc' : 'asc' %>">
+            Conference <%= sortOptions.field === 'conference' ? (sortOptions.direction === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>
+          <a href="/teams?sort=championships&direction=<%= sortOptions.field === 'championships' && sortOptions.direction === 'asc' ? 'desc' : 'asc' %>">
+            Championships <%= sortOptions.field === 'championships' ? (sortOptions.direction === 'asc' ? '↑' : '↓') : '' %>
+          </a>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% teams.forEach(team => { %>
+        <tr>
+          <td><%= team.name %></td>
+          <td><%= team.foundedYear %></td>
+          <td><%= team.conference %></td>
+          <td><%= team.championships %></td>
+          <td><a href="/teams/<%= team.id %>" class="view-button">View</a></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/footer') %>
