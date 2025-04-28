@@ -1,0 +1,192 @@
+[
+    {
+      "id": "NBA-001",
+      "name": "Los Angeles Lakers",
+      "description": "One of the most successful and popular teams in NBA history, based in Los Angeles, California.",
+      "foundedYear": 1947,
+      "isActive": true,
+      "championships": 17,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/los-angeles-lakers-logo-png_seeklogo-546302.png",
+      "conference": "Western",
+      "players": ["LeBron James", "Anthony Davis", "Russell Westbrook"],
+      "arena": {
+        "id": "ARENA-001",
+        "name": "Crypto.com Arena",
+        "location": "Los Angeles, California",
+        "capacity": 19060,
+        "openedYear": 1999,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/crypto.jpeg"
+      }
+    },
+    {
+      "id": "NBA-002",
+      "name": "Golden State Warriors",
+      "description": "Known for their sharpshooting and fast-paced playstyle, based in San Francisco, California.",
+      "foundedYear": 1946,
+      "isActive": true,
+      "championships": 7,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/warriors.png",
+      "conference": "Western",
+      "players": ["Stephen Curry", "Klay Thompson", "Draymond Green"],
+      "arena": {
+        "id": "ARENA-002",
+        "name": "Chase Center",
+        "location": "San Francisco, California",
+        "capacity": 18064,
+        "openedYear": 2019,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/chase-center.jpg"
+      }
+    },
+    {
+      "id": "NBA-003",
+      "name": "Chicago Bulls",
+      "description": "Famous for their dominance in the 1990s led by Michael Jordan, based in Chicago, Illinois.",
+      "foundedYear": 1966,
+      "isActive": true,
+      "championships": 6,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/bulls.png",
+      "conference": "Eastern",
+      "players": ["DeMar DeRozan", "Zach LaVine", "Nikola Vucevic"],
+      "arena": {
+        "id": "ARENA-003",
+        "name": "United Center",
+        "location": "Chicago, Illinois",
+        "capacity": 20917,
+        "openedYear": 1994,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/united-center.jpg"
+      }
+    },
+    {
+      "id": "NBA-004",
+      "name": "Boston Celtics",
+      "description": "The team with the most NBA championships, based in Boston, Massachusetts.",
+      "foundedYear": 1946,
+      "isActive": true,
+      "championships": 17,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/celtics.jpg",
+      "conference": "Eastern",
+      "players": ["Jayson Tatum", "Jaylen Brown", "Marcus Smart"],
+      "arena": {
+        "id": "ARENA-004",
+        "name": "TD Garden",
+        "location": "Boston, Massachusetts",
+        "capacity": 18624,
+        "openedYear": 1995,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/td-garden.jpg"
+      }
+    },
+    {
+      "id": "NBA-005",
+      "name": "Miami Heat",
+      "description": "Known for their strong defensive play and multiple championships, based in Miami, Florida.",
+      "foundedYear": 1988,
+      "isActive": true,
+      "championships": 3,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/heat_.png",
+      "conference": "Eastern",
+      "players": ["Jimmy Butler", "Bam Adebayo", "Kyle Lowry"],
+      "arena": {
+        "id": "ARENA-005",
+        "name": "FTX Arena",
+        "location": "Miami, Florida",
+        "capacity": 19600,
+        "openedYear": 1999,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/ftx-arena.jpg"
+      }
+    },
+    {
+      "id": "NBA-006",
+      "name": "Brooklyn Nets",
+      "description": "A team with a star-studded roster, based in Brooklyn, New York.",
+      "foundedYear": 1967,
+      "isActive": true,
+      "championships": 0,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/nets.jpg",
+      "conference": "Eastern",
+      "players": ["Kevin Durant", "Kyrie Irving", "Ben Simmons"],
+      "arena": {
+        "id": "ARENA-006",
+        "name": "Barclays Center",
+        "location": "Brooklyn, New York",
+        "capacity": 17732,
+        "openedYear": 2012,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/barclays-center.jpg"
+      }
+    },
+    {
+      "id": "NBA-007",
+      "name": "Milwaukee Bucks",
+      "description": "The 2021 NBA champions, known for their strong team play, based in Milwaukee, Wisconsin.",
+      "foundedYear": 1968,
+      "isActive": true,
+      "championships": 2,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/bucks.jpg",
+      "conference": "Eastern",
+      "players": ["Giannis Antetokounmpo", "Khris Middleton", "Jrue Holiday"],
+      "arena": {
+        "id": "ARENA-007",
+        "name": "Fiserv Forum",
+        "location": "Milwaukee, Wisconsin",
+        "capacity": 17500,
+        "openedYear": 2018,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/fiserv-forum.jpg"
+      }
+    },
+    {
+      "id": "NBA-008",
+      "name": "Phoenix Suns",
+      "description": "A team known for their fast-paced offense, based in Phoenix, Arizona.",
+      "foundedYear": 1968,
+      "isActive": true,
+      "championships": 0,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/suns.jpg",
+      "conference": "Western",
+      "players": ["Devin Booker", "Chris Paul", "Deandre Ayton"],
+      "arena": {
+        "id": "ARENA-008",
+        "name": "Footprint Center",
+        "location": "Phoenix, Arizona",
+        "capacity": 18055,
+        "openedYear": 1992,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/footprint-center.jpg"
+      }
+    },
+    {
+      "id": "NBA-009",
+      "name": "Dallas Mavericks",
+      "description": "Known for their European influence and star player Luka Dončić, based in Dallas, Texas.",
+      "foundedYear": 1980,
+      "isActive": true,
+      "championships": 1,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/mavericks.jpg",
+      "conference": "Western",
+      "players": ["Luka Dončić", "Kristaps Porziņģis", "Tim Hardaway Jr."],
+      "arena": {
+        "id": "ARENA-009",
+        "name": "American Airlines Center",
+        "location": "Dallas, Texas",
+        "capacity": 19200,
+        "openedYear": 2001,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/american-airlines-center.jpg"
+      }
+    },
+    {
+      "id": "NBA-010",
+      "name": "Toronto Raptors",
+      "description": "The only Canadian team in the NBA, known for their 2019 championship, based in Toronto, Ontario.",
+      "foundedYear": 1995,
+      "isActive": true,
+      "championships": 1,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/raptors.jpg",
+      "conference": "Eastern",
+      "players": ["Pascal Siakam", "Fred VanVleet", "OG Anunoby"],
+      "arena": {
+        "id": "ARENA-010",
+        "name": "Scotiabank Arena",
+        "location": "Toronto, Ontario",
+        "capacity": 19800,
+        "openedYear": 1999,
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/scotiabank-arena.jpg"
+      }
+    }
+  ]

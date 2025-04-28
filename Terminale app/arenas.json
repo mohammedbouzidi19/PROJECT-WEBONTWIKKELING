@@ -1,0 +1,82 @@
+[
+    {
+      "id": "ARENA-001",
+      "name": "Crypto.com Arena",
+      "location": "Los Angeles, California",
+      "capacity": 19060,
+      "openedYear": 1999,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/crypto.jpeg"
+    }, 
+    {
+      "id": "ARENA-002",
+      "name": "Chase Center",
+      "location": "San Francisco, California",
+      "capacity": 18064,
+      "openedYear": 2019,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/chase-center.jpg"
+    },
+    {
+      "id": "ARENA-003",
+      "name": "United Center",
+      "location": "Chicago, Illinois",
+      "capacity": 20917,
+      "openedYear": 1994,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/united-center.jpg"
+    },
+    {
+      "id": "ARENA-004",
+      "name": "TD Garden",
+      "location": "Boston, Massachusetts",
+      "capacity": 18624,
+      "openedYear": 1995,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/td-garden.jpg"
+    },
+    {
+      "id": "ARENA-005",
+      "name": "FTX Arena",
+      "location": "Miami, Florida",
+      "capacity": 19600,
+      "openedYear": 1999,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/ftx-arena.jpg"
+    },
+    {
+      "id": "ARENA-006",
+      "name": "Barclays Center",
+      "location": "Brooklyn, New York",
+      "capacity": 17732,
+      "openedYear": 2012,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/barclays-center.jpg"
+    },
+    {
+      "id": "ARENA-007",
+      "name": "Fiserv Forum",
+      "location": "Milwaukee, Wisconsin",
+      "capacity": 17500,
+      "openedYear": 2018,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/fiserv-forum.jpg"
+    },
+    {
+      "id": "ARENA-008",
+      "name": "Footprint Center",
+      "location": "Phoenix, Arizona",
+      "capacity": 18055,
+      "openedYear": 1992,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/footprint-center.jpg"
+    },
+    {
+      "id": "ARENA-009",
+      "name": "American Airlines Center",
+      "location": "Dallas, Texas",
+      "capacity": 19200,
+      "openedYear": 2001,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/american-airlines-center.jpg"
+    },
+    {
+      "id": "ARENA-010",
+      "name": "Scotiabank Arena",
+      "location": "Toronto, Ontario",
+      "capacity": 19800,
+      "openedYear": 1999,
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/scotiabank-arena.jpg"
+    }
+  ]
