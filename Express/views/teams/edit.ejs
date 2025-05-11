@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <a href="/teams/<%= team.id %>" class="back-link">← Terug naar Team</a>
+
+  <div class="detail-card">
+    <h2>Bewerk Team: <%= team.name %></h2>
+    
+    <form action="/teams/<%= team.id %>/edit" method="POST" class="form">
+      <div class="form-group">
+        <label for="name">Team Naam:</label>
+        <input type="text" id="name" name="name" value="<%= team.name %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="founded">Founded Jaar:</label>
+        <input type="number" id="founded" name="founded" value="<%= team.founded %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="conference">Conference:</label>
+        <select id="conference" name="conference" required>
+          <option value="Eastern" <%= team.conference === "Eastern" ? "selected" : "" %>>Eastern</option>
+          <option value="Western" <%= team.conference === "Western" ? "selected" : "" %>>Western</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="championships">Aantal Championships:</label>
+        <input type="number" id="championships" name="championships" value="<%= team.championships %>" required>
+      </div>
+
+      <button type="submit">Opslaan</button>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
