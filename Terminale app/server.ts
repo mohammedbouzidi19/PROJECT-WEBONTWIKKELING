@@ -1,5 +1,5 @@
 import * as readline from 'readline';
-import { Team, Arena } from './interfaces';
+import { Team, Arena } from './types';
 
 const rl = readline.createInterface({
   input: process.stdin,

@@ -6,7 +6,7 @@
       "foundedYear": 1947,
       "isActive": true,
       "championships": 17,
-      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/los-angeles-lakers-logo-png_seeklogo-546302.png",
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/los-angeles-lakers-logo-png_seeklogo-546302.png" ,
       "conference": "Western",
       "players": ["LeBron James", "Anthony Davis", "Russell Westbrook"],
       "arena": {
@@ -53,7 +53,7 @@
         "location": "Chicago, Illinois",
         "capacity": 20917,
         "openedYear": 1994,
-        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/united-center.jpg"
+        "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/arenabulls.jpeg"
       }
     },
     {
