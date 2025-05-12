@@ -8,6 +8,7 @@ const client = new MongoClient(uri);
 
 // Pas deze types aan aan jouw data
 export type Team = {
+  [x: string]: any;
   id: string;
   name: string;
   founded: number;
@@ -57,4 +58,43 @@ export async function getTeamById(id: string): Promise<Team | null> {
 
 export async function updateTeam(id: string, update: Partial<Team>) {
   return await teamsCollection.updateOne({ id }, { $set: update });
+}
+
+
+// arena 
+
+// Vervolg in je database.ts
+
+export type Arena = {
+  id: string;
+  name: string;
+  location: string;
+  capacity: number;
+  openedYear: number;
+  imageUrl: string;
+};
+
+export const arenasCollection: Collection<Arena> = client.db("nba").collection("arenas");
+
+export async function getAllArenas(): Promise<Arena[]> {
+  return await arenasCollection.find().toArray();
+}
+
+export async function getArenaById(id: string): Promise<Arena | null> {
+  return await arenasCollection.findOne({ id });
+}
+
+export async function updateArena(id: string, update: Partial<Arena>) {
+  return await arenasCollection.updateOne({ id }, { $set: update });
+}
+
+export async function loadInitialArenas() {
+  const count = await arenasCollection.countDocuments();
+  if (count === 0) {
+    console.log("ℹ️ Arenas niet gevonden in DB – ophalen van GitHub...");
+    const res = await fetch("https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/main/arenas.json");
+    const arenas: Arena[] = await res.json();
+    await arenasCollection.insertMany(arenas);
+    console.log("✅ Arenas toegevoegd aan MongoDB");
+  }
 }

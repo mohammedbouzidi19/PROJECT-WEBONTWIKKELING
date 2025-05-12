@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <a href="/arenas/<%= arena.id %>" class="back-link">← Terug naar Arena</a>
+
+  <div class="detail-card">
+    <h2>Bewerk Arena: <%= arena.name %></h2>
+    
+    <form action="/arenas/<%= arena.id %>/edit" method="POST" class="form">
+      <div class="form-group">
+        <label for="name">Naam:</label>
+        <input type="text" id="name" name="name" value="<%= arena.name %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Locatie:</label>
+        <input type="text" id="location" name="location" value="<%= arena.location %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="capacity">Capaciteit:</label>
+        <input type="number" id="capacity" name="capacity" value="<%= arena.capacity %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="openedYear">Geopend in jaar:</label>
+        <input type="number" id="openedYear" name="openedYear" value="<%= arena.openedYear %>" required>
+      </div>
+
+      <button type="submit">Opslaan</button>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

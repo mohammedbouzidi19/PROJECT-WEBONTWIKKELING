@@ -3,6 +3,11 @@ import dotenv from 'dotenv';
 import { Team, Arena } from '../Terminale app/types';
 import { MongoClient, Collection } from 'mongodb';
 import { connectToDatabase, getAllTeams, getTeamById, updateTeam } from './database';
+import {
+  getAllArenas,
+  getArenaById,
+  updateArena,  loadInitialArenas
+} from "./database";
 
 dotenv.config();
 
@@ -33,6 +38,7 @@ async function fetchData() {
 
 // Teams list
 connectToDatabase();
+loadInitialArenas();
 
 // 🌐 Redirect naar teams als startpagina
 app.get('/', (req, res) => {
@@ -114,7 +120,7 @@ app.post('/teams/:id/edit', async (req, res) => {
 
     await updateTeam(req.params.id, {
       name,
-      founded: parseInt(founded),    
+      founded,    
       conference,
       championships: parseInt(championships)
     });                                                               
@@ -125,40 +131,42 @@ app.post('/teams/:id/edit', async (req, res) => {
   }
 });
 
+
 app.get('/arenas', async (req, res) => {
-  const { arenasData } = await fetchData();
+  const arenas = await getAllArenas();
 
   const nameFilter = (req.query.name as string || '').toLowerCase();
   const sortField = req.query.sort as keyof Arena || 'name';
-  const sortDirection = req.query.direction as 'asc' | 'desc' || 'asc';
+  const sortDirection = req.query.direction === 'desc' ? 'desc' : 'asc';
 
-  let filteredArenas = nameFilter
-    ? arenasData.filter(arena => arena.name.toLowerCase().includes(nameFilter))
-    : arenasData;
+  let filtered = arenas.filter(a =>
+    a.name.toLowerCase().includes(nameFilter)
+  );
 
-  filteredArenas.sort((a, b) => {
-    const aValue = a[sortField]; 
-    const bValue = b[sortField]; 
+  filtered.sort((a, b) => {
+    const aVal = a[sortField];
+    const bVal = b[sortField];
 
-    if (typeof aValue === 'string' && typeof bValue === 'string') {
+    if (typeof aVal === 'string' && typeof bVal === 'string') {
       return sortDirection === 'asc'
-        ? aValue.localeCompare(bValue)
-        : bValue.localeCompare(aValue);
+        ? aVal.localeCompare(bVal)
+        : bVal.localeCompare(aVal);
     }
 
-    if (typeof aValue === 'number' && typeof bValue === 'number') {
-      return sortDirection === 'asc' ? aValue - bValue : bValue - aValue;
+    if (typeof aVal === 'number' && typeof bVal === 'number') {
+      return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
     }
 
     return 0;
   });
 
   res.render('arenas/index', {
-    arenas: filteredArenas,
-    nameFilter: req.query.name || '',
+    arenas: filtered,
+    nameFilter,
     sortOptions: { field: sortField, direction: sortDirection }
   });
 });
+
 
 app.get('/arenas/:id', async (req, res) => {
   const { arenasData, teamsData } = await fetchData();
@@ -170,6 +178,28 @@ app.get('/arenas/:id', async (req, res) => {
 
   const teamsInArena = teamsData.filter(team => team.arena.id === arena.id);
   res.render('arenas/detail', { arena, teamsInArena });
+});
+
+// ✏️ Arena bewerken (GET)
+app.get('/arenas/:id/edit', async (req, res) => {
+  const arena = await getArenaById(req.params.id);
+  if (!arena) return res.render('error', { message: 'Arena niet gevonden' });
+
+  res.render('arenas/edit', { arena });
+});
+
+// 💾 Arena bewerken (POST)
+app.post('/arenas/:id/edit', async (req, res) => {
+  const { name, location, capacity, openedYear } = req.body;
+
+  await updateArena(req.params.id, {
+    name,
+    location,
+    capacity: parseInt(capacity),
+    openedYear: parseInt(openedYear)
+  });
+
+  res.redirect(`/arenas/${req.params.id}`);
 });
 
 app.listen(port, () => {
