@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { Team, Arena } from '../Terminale app/types';
+import {  Arena } from '../Terminale app/types';
+import {Team} from "./database"
 import { MongoClient, Collection } from 'mongodb';
 import { connectToDatabase, getAllTeams, getTeamById, updateTeam } from './database';
 import {
@@ -36,16 +37,16 @@ async function fetchData() {
 }
 
 
-// Teams list
+
 connectToDatabase();
 loadInitialArenas();
 
-// 🌐 Redirect naar teams als startpagina
+
 app.get('/', (req, res) => {
   res.redirect('/teams');
 });
 
-// 📄 TEAMS PAGINA — lijst en sortering uit MongoDB
+
 app.get('/teams', async (req, res) => {
   try {
     const teams = await getAllTeams();
@@ -58,18 +59,18 @@ app.get('/teams', async (req, res) => {
       team.name.toLowerCase().includes(nameFilter)
     );
 
-    filteredTeams.sort((a, b) => {
-      const aVal = a[sortField];
-      const bVal = b[sortField];
+    filteredTeams.sort((teamA, teamB) => {
+      const aValue = teamA[sortField];
+      const bValue = teamB[sortField];
 
-      if (typeof aVal === 'string' && typeof bVal === 'string') {
+      if (typeof aValue === 'string' && typeof bValue === 'string') {
         return sortDirection === 'asc'
-          ? aVal.localeCompare(bVal)
-          : bVal.localeCompare(aVal);
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue);
       }
 
-      if (typeof aVal === 'number' && typeof bVal === 'number') {
-        return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+      if (typeof aValue === 'number' && typeof bValue === 'number') {
+        return sortDirection === 'asc' ? aValue - bValue : bValue - aValue;
       }
 
       return 0;
@@ -82,56 +83,59 @@ app.get('/teams', async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.render('error', { message: 'Failed to load teams' });
+    res.render('error', { message: 'Fout bij het laden van teams' });
   }
 });
 
-// 📄 TEAM DETAIL PAGINA
+
 app.get('/teams/:id', async (req, res) => {
   try {
     const team = await getTeamById(req.params.id);
 
     if (!team) {
-      return res.render('error', { message: 'Team not found' });
+      return res.render('error', { message: 'Team niet gevonden' });
     }
 
     res.render('teams/detail1', { team });
   } catch (error) {
-    res.render('error', { message: 'Failed to load team details' });
+    res.render('error', { message: 'Fout bij het laden van teams' });
   }
 });
 
-// ✏️ EDIT GET
+
 app.get('/teams/:id/edit', async (req, res) => {
   try { 
     const team = await getTeamById(req.params.id);
-    if (!team) return res.render('error', { message: 'Team not found' });
+    if (!team) return res.render('error', { message: 'Team niet gevonden' });
 
     res.render('teams/edit', { team });
   } catch (error) {
-    res.render('error', { message: 'Failed to load team for editing' });
+    res.render('error', { message: 'fout bij het laden van teams om te editen' });
   }
 });
 
-// 💾 EDIT POST
+
 app.post('/teams/:id/edit', async (req, res) => {
   try {
     const { name, founded, conference, championships } = req.body;
-
-    await updateTeam(req.params.id, {
+    const newData : Team = {
       name,
-      founded,    
-      conference,
+      foundedYear: parseInt(founded),
+      conference: "Eastern",
       championships: parseInt(championships)
-    });                                                               
+    }
+    await updateTeam(req.params.id, newData);                                                               
 
     res.redirect(`/teams/${req.params.id}`);
   } catch (error) {
-    res.render('error', { message: 'Failed to update team' });
+    res.render('error', { message: 'Fout om team up te daten' });
   }
 });
 
 
+
+
+// arenas
 app.get('/arenas', async (req, res) => {
   const arenas = await getAllArenas();
 
@@ -143,18 +147,18 @@ app.get('/arenas', async (req, res) => {
     a.name.toLowerCase().includes(nameFilter)
   );
 
-  filtered.sort((a, b) => {
-    const aVal = a[sortField];
-    const bVal = b[sortField];
+  filtered.sort((arenaA, arenaB) => {
+    const aValue = arenaA[sortField];
+    const bValue = arenaB[sortField];
 
-    if (typeof aVal === 'string' && typeof bVal === 'string') {
+    if (typeof aValue === 'string' && typeof bValue === 'string') {
       return sortDirection === 'asc'
-        ? aVal.localeCompare(bVal)
-        : bVal.localeCompare(aVal);
+        ? aValue.localeCompare(bValue)
+        : bValue.localeCompare(aValue);
     }
 
-    if (typeof aVal === 'number' && typeof bVal === 'number') {
-      return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
+    if (typeof aValue === 'number' && typeof bValue === 'number') {
+      return sortDirection === 'asc' ? aValue - bValue : bValue - aValue;
     }
 
     return 0;
@@ -169,18 +173,22 @@ app.get('/arenas', async (req, res) => {
 
 
 app.get('/arenas/:id', async (req, res) => {
-  const { arenasData, teamsData } = await fetchData();
-  const arena = arenasData.find(a => a.id === req.params.id);
+  try {
+      const arena = await getArenaById(req.params.id);
+   
+    if (!arena) {
+      return res.render('error', { message: 'Arena niet gevonden' });
+    }
 
-  if (!arena) {
-    return res.render('error', { message: 'Arena not found' });
+    
+
+    res.render('arenas/detail', { arena,  });
+  } catch (error) {
+    res.render('error', { message: 'Fout bij het laden van de arena' });
   }
-
-  const teamsInArena = teamsData.filter(team => team.arena.id === arena.id);
-  res.render('arenas/detail', { arena, teamsInArena });
 });
 
-// ✏️ Arena bewerken (GET)
+
 app.get('/arenas/:id/edit', async (req, res) => {
   const arena = await getArenaById(req.params.id);
   if (!arena) return res.render('error', { message: 'Arena niet gevonden' });
@@ -188,7 +196,7 @@ app.get('/arenas/:id/edit', async (req, res) => {
   res.render('arenas/edit', { arena });
 });
 
-// 💾 Arena bewerken (POST)
+
 app.post('/arenas/:id/edit', async (req, res) => {
   const { name, location, capacity, openedYear } = req.body;
 

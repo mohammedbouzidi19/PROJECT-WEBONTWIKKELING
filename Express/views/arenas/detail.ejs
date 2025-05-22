@@ -17,31 +17,6 @@
         <p><strong>Opened Year:</strong> <%= arena.openedYear %></p>
       </div>
       
-      <% if (teamsInArena.length > 0) { %>
-        <div class="info-section">
-          <h3>Teams Playing Here</h3>
-          <div class="teams-grid">
-            <% teamsInArena.forEach(team => { %>
-              <div class="team-card">
-                <img src="<%= team.imageUrl %>" alt="<%= team.name %> Logo" class="team-logo">
-                <div class="team-info">
-                  <h4><%= team.name %></h4>
-                  <p>Conference: <%= team.conference %></p>
-                  <p>Championships: <%= team.championships %></p>
-                  <a href="/teams/<%= team.id %>" class="view-button">View Team Details</a>
-                </div>
-              </div>
-            <% }); %>
-          </div>
-        </div>
-      <% } else { %>
-        <div class="info-section">
-          <h3>Teams Playing Here</h3>
-          <p>No teams currently play in this arena.</p>
-        </div>
-      <% } %>
-    </div>
-  </div>
-</div>
+    
 
 <%- include('../partials/footer') %>
