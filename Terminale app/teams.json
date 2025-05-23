@@ -63,7 +63,7 @@
       "foundedYear": 1946,
       "isActive": true,
       "championships": 17,
-      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/celtics.jpg",
+      "imageUrl": "https://raw.githubusercontent.com/mohammedbouzidi19/project-JSON/refs/heads/main/images/Boston.png",
       "conference": "Eastern",
       "players": ["Jayson Tatum", "Jaylen Brown", "Marcus Smart"],
       "arena": {
