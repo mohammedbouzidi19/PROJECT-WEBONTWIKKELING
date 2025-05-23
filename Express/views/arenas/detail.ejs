@@ -4,6 +4,11 @@
   <a href="/arenas" class="back-link">← Back to Arenas</a>
   
   <div class="detail-card">
+
+     <div class="edit-button-wrapper">
+      <a href="/arenas/<%= arena._id %>/edit" class="edit-button">Edit</a>
+    </div>  
+    
     <div class="detail-header">
       <img src="<%= arena.imageUrl %>" alt="<%= arena.name %>" class="arena-image">
       <h2><%= arena.name %></h2>
@@ -17,6 +22,6 @@
         <p><strong>Opened Year:</strong> <%= arena.openedYear %></p>
       </div>
       
-    
+
 
 <%- include('../partials/footer') %>

@@ -4,6 +4,11 @@
   <a href="/teams" class="back-link">← Back to Teams</a>
   
   <div class="detail-card">
+
+     <div class="edit-button-wrapper">
+      <a href="/teams/<%= team._id %>/edit" class="edit-button">Edit</a>
+    </div>
+
     <div class="detail-header">
       <img src="<%= team.imageUrl %>" alt="<%= team.name %> Logo" class="team-logo">
       <h2><%= team.name %></h2>
@@ -43,5 +48,6 @@
     </div>
   </div>
 </div>
+
 
 <%- include('../partials/footer') %>

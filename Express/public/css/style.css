@@ -393,3 +393,26 @@ label span {
 .home-button:hover {
   background-color: #1d428a;
 }
+
+
+
+/*edit button */
+
+.edit-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.edit-button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
