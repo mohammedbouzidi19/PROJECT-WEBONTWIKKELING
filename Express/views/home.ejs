@@ -1,0 +1,13 @@
+<%- include("partials/header") %>
+
+<main class="home-container">
+  <h1>Welkom <%= user ? user.username : 'gast' %> bij de Basketbal App</h1>
+  <p>Kies een van de opties hieronder:</p>
+
+  <div class="home-options">
+    <a href="/teams" class="home-button">Bekijk Teams</a>
+    <a href="/arenas" class="home-button">Bekijk Arenas</a>
+  </div>
+</main>
+
+<%- include("partials/footer") %>

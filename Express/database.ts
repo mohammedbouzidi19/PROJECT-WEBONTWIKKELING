@@ -1,24 +1,18 @@
 import { MongoClient, Collection } from "mongodb";
 import dotenv from "dotenv";
+import { Team, UserModel, Arena } from "./types";
+import bcrypt from "bcrypt";
 
 dotenv.config();
 
-const uri = process.env.MONGODB_URI!;
-const client = new MongoClient(uri);
+export const MONGODB_URI = process.env.MONGODB_URI!;
+const client = new MongoClient(MONGODB_URI);
 
 
-export type Team = {
- 
-  id?: string;
-  name: string;
-  foundedYear?: number;
-  conference?: "Eastern" | "Western";
-  championships?: number;
-  imageUrl?: string;
-};
+
 
 export const teamsCollection: Collection<Team> = client.db("nba").collection("teams");
-
+export const userCollection: Collection<UserModel> = client.db('login-express').collection<UserModel>('users');
 export async function connectToDatabase() {
   try {
     await client.connect();
@@ -63,14 +57,6 @@ export async function updateTeam(id: string, update: Team) {
 
 // arena 
 
-export type Arena = {
-  id?: string;
-  name: string;
-  location?: string;
-  capacity?: number;
-  openedYear?: number;
-  imageUrl?: string;
-};
 
 export const arenasCollection: Collection<Arena> = client.db("nba").collection("arenas");
 
@@ -95,4 +81,47 @@ export async function loadInitialArenas() {
     await arenasCollection.insertMany(arenas);
     console.log("✅ Arenas toegevoegd aan MongoDB");
   }
+}
+
+const saltRounds : number = 10;
+
+export async function login(username: string, password: string) {
+    if (username === "" || password === "") {
+        throw new Error("Username and password required");
+    }
+    let user : UserModel | null = await userCollection.findOne<UserModel>({username: username});
+    if (user) {
+        if (await bcrypt.compare(password, user.password!)) {
+            return user;
+        } else {
+            throw new Error("Password incorrect");
+        }
+    } else {
+        throw new Error("User not found");
+    }
+}
+
+
+export async function register(username: string, email: string, password: string) {
+    if (email === "" || password === "") {
+        throw new Error("Email en wachtwoord vereist!");
+    }
+
+    let emailUser: UserModel | null = await userCollection.findOne<UserModel>({ email: email });
+    let userName: UserModel | null = await userCollection.findOne<UserModel>({ username: username });
+
+    if (emailUser) {
+        throw new Error("Email bestaat al! gebruik een andere mail");
+    }
+    if (userName) {
+        throw new Error("Username bestaat al! kies een andere username");
+    }
+
+    await userCollection.insertOne({
+        username: username,
+        email: email,
+        password: await bcrypt.hash(password, saltRounds)
+    });
+
+    return;
 }

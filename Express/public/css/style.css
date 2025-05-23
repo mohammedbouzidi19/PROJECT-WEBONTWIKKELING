@@ -212,3 +212,184 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* login */
+
+/* Containers */
+.login-container,
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 2rem;
+}
+
+/* Formulier */
+.form-login,
+.register-form {
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Titel & Bericht */
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.message {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Label + Input */
+label {
+  display: block;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s border ease;
+}
+
+.input:focus {
+  border-color: #1d428a;
+}
+
+/* Span boven input */
+label span {
+  position: absolute;
+  left: 0.9rem;
+  top: -0.7rem;
+  background: #fff;
+  padding: 0 0.3rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Knop */
+.submit {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #1d428a;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit:hover {
+  background-color: #1d428a;
+}
+
+/* Signin tekst */
+.signin {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.signin a {
+  color: #1d428a;
+  text-decoration: none;
+}
+
+.signin a:hover {
+  text-decoration: underline;
+}
+
+/* Password tooltip */
+.password-requirements {
+  position: relative;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.password-requirements .tooltip {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  top: 1.5rem;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.password-requirements:hover .tooltip {
+  display: block;
+}
+
+.password-requirements i {
+  margin-right: 0.5rem;
+  color: #1d428a;
+}
+
+.home-container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: #f0f2f5;
+}
+
+.home-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.home-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.home-options {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #1d428a;
+  color: white;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: #1d428a;
+}
