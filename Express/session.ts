@@ -18,8 +18,8 @@ const mongoStore = new MongoDBStore({
 
 export const sessionMiddleware = session({
     secret: process.env.SESSION_SECRET ?? "your_secret_key",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     store: mongoStore,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24,
