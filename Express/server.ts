@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import {  Arena } from '../Terminale app/types';
-import {Team, UserModel} from "./types"
+import {  Team , Arena } from '../Terminale app/types';
+import { UserModel} from "./types"
 import { MongoClient, Collection } from 'mongodb';
 import { connectToDatabase, getAllTeams, getTeamById, login, updateTeam } from './database';
 import {
